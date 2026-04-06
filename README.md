@@ -18,6 +18,7 @@ Because the app stores data locally in the browser, it does not require a backen
 - Persist data in localStorage.
 
 ## Bonus features
+
 - Search products by name or description.
 - Toggle between light mode and dark mode.
 - Responsive layout for desktop and mobile.
@@ -110,11 +111,3 @@ Then start the production server:
 ```bash
 npm run start
 ```
-
-## Screenshots
-
-If you want, you can add project screenshots here later to document the form, product list, image upload preview, and dark mode.
-
-## License
-
-No license has been specified for this project yet.
