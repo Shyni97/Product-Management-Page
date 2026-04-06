@@ -95,6 +95,8 @@ The theme toggle stores the selected mode in localStorage under the `pm_theme` k
 
 You can deploy this app to any platform that supports Next.js, including Vercel.
 
+Live deployment: https://product-management-page-omega.vercel.app
+
 Build the project first:
 
 ```bash
