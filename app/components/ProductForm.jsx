@@ -137,6 +137,9 @@ export default function ProductForm({ onSave, editingProduct, onCancelEdit }) {
               className="mt-6 flex h-[280px] w-full flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white text-center transition hover:border-indigo-400 hover:bg-indigo-50/20 dark:border-slate-600 dark:bg-slate-800 dark:hover:border-indigo-400"
             >
               <span className="text-3xl text-slate-400 dark:text-slate-500">☁</span>
+              <span className="mt-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-slate-200 text-base font-bold text-slate-600 dark:bg-slate-700 dark:text-slate-200">
+                +
+              </span>
               <span className="mt-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
                 Upload product image
               </span>
