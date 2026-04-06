@@ -15,8 +15,10 @@ Because the app stores data locally in the browser, it does not require a backen
 - Preview uploaded images before saving.
 - Edit existing products.
 - Delete products.
-- Search products by name or description.
 - Persist data in localStorage.
+
+## Bonus features
+- Search products by name or description.
 - Toggle between light mode and dark mode.
 - Responsive layout for desktop and mobile.
 
@@ -95,7 +97,7 @@ The theme toggle stores the selected mode in localStorage under the `pm_theme` k
 
 You can deploy this app to any platform that supports Next.js, including Vercel.
 
-Live deployment: https://product-management-page-omega.vercel.app
+Live deployment: [https://product-management-page-omega.vercel.app](https://product-management-page-omega.vercel.app)
 
 Build the project first:
 
