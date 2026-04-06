@@ -8,39 +8,45 @@ const STORAGE_KEY = "pm_products";
 const THEME_STORAGE_KEY = "pm_theme";
 
 export default function Page() {
-  const [products, setProducts] = useState(() => {
-    if (typeof window === "undefined") return [];
-
-    const savedProducts = localStorage.getItem(STORAGE_KEY);
-    if (!savedProducts) return [];
-
-    try {
-      return JSON.parse(savedProducts);
-    } catch {
-      return [];
-    }
-  });
+  const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [message, setMessage] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window === "undefined") return false;
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    const savedProducts = localStorage.getItem(STORAGE_KEY);
+    if (savedProducts) {
+      try {
+        setProducts(JSON.parse(savedProducts));
+      } catch {
+        setProducts([]);
+      }
+    }
 
     const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    if (savedTheme === "dark") return true;
-    if (savedTheme === "light") return false;
+    if (savedTheme === "dark") {
+      setIsDarkMode(true);
+    } else if (savedTheme === "light") {
+      setIsDarkMode(false);
+    } else {
+      setIsDarkMode(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
 
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  });
+    setIsHydrated(true);
+  }, []);
 
   useEffect(() => {
+    if (!isHydrated) return;
     document.documentElement.classList.toggle("dark", isDarkMode);
     localStorage.setItem(THEME_STORAGE_KEY, isDarkMode ? "dark" : "light");
-  }, [isDarkMode]);
+  }, [isDarkMode, isHydrated]);
 
   useEffect(() => {
+    if (!isHydrated) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(products));
-  }, [products]);
+  }, [products, isHydrated]);
 
   useEffect(() => {
     if (!message) return;
